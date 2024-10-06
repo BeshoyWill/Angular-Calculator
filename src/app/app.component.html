@@ -1,0 +1,114 @@
+<div
+  class="mx-auto overflow-hidden mt-10 shadow-lg mb-2 bg-purple-900 shadow-lg border rounded-lg w-96"
+>
+  <div class="flex flex-col justify-center items-center">
+    <div class="p-5 text-white text-center text-3xl bg-purple-900">
+      <span class="text-orange-500">Calcu</span>lator
+    </div>
+    <div
+      class="pt-5 p-5 pb-0 text-white text-right text-3xl bg-purple-800 w-[100%]"
+    >
+      {{ firstValue }} {{ symbol }} {{ secondValue }}
+    </div>
+    <div
+      class="pt-2 p-5 pb-4 text-white text-right text-3xl bg-purple-800 w-[100%]"
+    >
+      @if (finalResult) {<span class="text-orange-500"> {{ finalResult }}</span>
+      }
+    </div>
+
+    <div class="flex items-stretch gap-4 bg-purple-900 h-20">
+      @for (item of ['%', '(', ')', '÷']; track $index) {
+
+      <div
+        class="flex px-2 py-2 justify-center flex items-center text-white text-xl font-semibold"
+      >
+        <div
+          class="rounded-full h-14 w-14 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none hover:shadow-2xl cursor-pointer"
+          (click)="getAction(item)"
+        >
+          {{ item }}
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="flex items-stretch gap-4 bg-purple-900 h-24">
+      @for (item of [7, 8, 9, 'x']; track $index) {
+      <div
+        class="flex px-2 py-2 justify-center flex items-center text-white text-xl font-semibold"
+      >
+        <div
+          class="rounded-full h-14 w-14 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none hover:shadow-2xl cursor-pointer"
+          (click)="getAction(item)"
+        >
+          {{ item }}
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="flex items-stretch gap-4 bg-purple-900 h-24">
+      @for (item of [4, 5, 6, '-']; track $index) {
+      <div
+        class="flex px-2 py-2 justify-center flex items-center text-white text-xl font-semibold"
+      >
+        <div
+          class="rounded-full h-14 w-14 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none hover:shadow-2xl cursor-pointer"
+          (click)="getAction(item)"
+        >
+          {{ item }}
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="flex items-stretch gap-4 bg-purple-900 h-24">
+      @for (item of [1, 2, 3, '+']; track $index) {
+      <div
+        class="flex px-2 py-2 justify-center flex items-center text-white text-xl font-semibold"
+      >
+        <div
+          class="rounded-full h-14 w-14 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none hover:shadow-2xl cursor-pointer"
+          (click)="getAction(item)"
+        >
+          {{ item }}
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="flex items-stretch gap-4 bg-purple-900 h-24 mb-4">
+      @for (item of [0, '.', 'AC', '=']; track $index) {
+      <div
+        class="flex px-2 py-2 justify-center flex items-center text-white text-xl font-semibold"
+      >
+        @if (item === '=') {
+        <div
+          class="rounded-full h-14 w-14 text-2xl flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none hover:shadow-2xl cursor-pointer"
+          (click)="equal()"
+        >
+          {{ item }}
+        </div>
+        } @else if (item === 'AC') {
+
+        <div
+          class="rounded-full h-14 w-14 flex items-center text-orange-500 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-orange-500 focus:outline-none hover:shadow-2xl cursor-pointer"
+          (click)="clear()"
+        >
+          {{ item }}
+        </div>
+        } @else {
+
+        <div
+          class="rounded-full h-14 w-14 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none hover:shadow-2xl cursor-pointer"
+          (click)="getAction(item)"
+        >
+          {{ item }}
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </div>
+</div>
